@@ -180,6 +180,10 @@ func (q *TransmitLimitedQueue) lazyInit() {
 // the initial transmit tier assigned to the message. This is meant to be used
 // for unit testing.
 func (q *TransmitLimitedQueue) queueBroadcast(b Broadcast, initialTransmits int) {
+	if q == nil {
+		return
+	}
+
 	q.mu.Lock()
 	defer q.mu.Unlock()
 
